@@ -5,14 +5,12 @@ Two graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for bindi
 These graphs are used in a small undergraduate summary paper by myself labelled "Nuclear organisation", which explains the theory behind these graphs in better detail; the text will be transcluded here when it is completed. 
 
 ## Prediction
-
-![prediction.png]()
+<img src="prediction.png"/>
 
 The mean binding energy of the semi-empirical mass formula. Observe that below 8 MeV nuclei rapidly become unstable outside the region of nuclei that have been discovered (as indicated by a dashed line). Contours double in energy difference as moving away from the maximum predicted binding energy. 
 
 ## Discrepancy
-
-![discrepancy.png]()
+<img src="discrepancy.png"/>
 
 The discrepancy between experimentally-obtained binding energies and those predicted by the SEMF. Energy colours are trimmed to the range *-50 < E < 150* for contrast.
 
