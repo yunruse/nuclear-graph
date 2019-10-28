@@ -28,8 +28,8 @@ if __name__ == '__main__':
     cbar = fig.colorbar(image)
     cbar.ax.set_ylabel('Binding energy per nucleon (keV)')
 
-    #M = E.max()
-    #contours = (0, M-8000, M-4000, M-2000, M-1000, M-500, M-250, M-125)
-    #cbar.add_lines(ax.contour(E, contours, cmap='magma'))
+    M = E.max()
+    contours = (0, M-8000, M-4000, M-2000, M-1000, M-500, M-250, M-125)
+    cbar.add_lines(ax.contour(E, contours, cmap='magma'))
 
     pyplot.show()
