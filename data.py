@@ -23,7 +23,7 @@ def binding_per_nucleon(N, Z):
     A = Z + N
     sgn = 0 if A % 2 else (-1 if Z % 2 else +1)
     return ( aV - aS / A**(1/3)
-                - aC * Z*(Z-1) / A**(4/3)
+                - aC * Z**2 / A**(4/3)
                 - aA * (A-2*Z)**2/A**2
                 + delta0 * sgn/A**(3/2)
     )
