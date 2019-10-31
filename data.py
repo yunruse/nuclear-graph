@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-
-# http://www.oecd-nea.org/dbdata/data/mass-evals2003/mass.mas03
 df = pd.read_fwf(
     'mass.mas03',
     usecols=(2, 3, 11),
@@ -18,7 +16,7 @@ def gathers(name, orelse):
     data = {(data.N, data.Z): data[name] for i, data in df.iterrows()}
     return np.vectorize(lambda n, z: data.get((n,z), orelse))
 
-aV, aS, aC, aA, delta0 = 15750, 17800, 711, 23700, 11180  # MeV
+aV, aS, aC, aA, delta0 = 15750, 17800, 711, 23700, 11180  # keV
 
 @np.vectorize
 def binding_per_nucleon(N, Z):
