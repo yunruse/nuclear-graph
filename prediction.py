@@ -5,7 +5,7 @@ from data import gathers, binding_per_nucleon
 
 if __name__ == '__main__':
     fig, ax = pyplot.subplots(constrained_layout=True)
-    ax.set_title('Semi-empirical mass formula $SEMF(N, Z)$')
+    #ax.set_title('Semi-empirical mass formula $SEMF(N, Z)$')
 
     ax.set_xlabel('Number of neutrons $N$')
     ax.set_xlim(0, 140)
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     z = np.arange(1, 93)
 
     N, Z = np.meshgrid(n, z)
-    E = binding_per_nucleon(N, Z)
+    E = binding_per_nucleon(N, Z) / 1000
     E[E<0] = 0
     image = ax.imshow(E, cmap='viridis', origin='lower', alpha=1)
     
@@ -26,10 +26,11 @@ if __name__ == '__main__':
         linestyles=('dashed', ), linewidths=(0.5, ))
 
     cbar = fig.colorbar(image)
-    cbar.ax.set_ylabel('Binding energy per nucleon (keV)')
+    cbar.ax.set_ylabel('Binding energy per nucleon (MeV)')
 
     M = E.max()
-    contours = (0, M-8000, M-4000, M-2000, M-1000, M-500, M-250, M-125)
+    contours = (0, M-8, M-4, M-2, M-1, M-1/2, M-1/4, M-1/8)
     cbar.add_lines(ax.contour(E, contours, cmap='magma'))
 
-    pyplot.show()
+    fig.set_size_inches(7.1, 4)
+    pyplot.savefig('prediction.png', transparent=True)
