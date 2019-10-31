@@ -2,7 +2,9 @@
 
 Two graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for binding energy, as configured with least-squares fit<sup>1</sup>, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
 
-These graphs are used in a small undergraduate summary paper by myself labelled "Nuclear organisation", which explains the theory behind these graphs in better detail; the text will be transcluded here when it is completed. 
+These graphs are used in a small undergraduate summary paper by myself labelled "Nuclear organisation", which explains the theory behind these graphs in better detail; the text will be transcluded here when it is completed.
+
+These graphs are available on Wikimedia Commons, and as such are in the public domain under the Creative Commons CC0 license.
 
 ## Prediction
 <img src="prediction.png"/>
