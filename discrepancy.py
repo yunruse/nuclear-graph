@@ -44,5 +44,6 @@ if __name__ == '__main__':
     cbar.ax.set_ylabel(energy)
     cbar.set_ticks(contours)
     cbar.add_lines(contour)
-    
-    pyplot.show()
+
+    fig.set_size_inches(7.1, 4)
+    pyplot.savefig('discrepancy.png', transparency=True)
