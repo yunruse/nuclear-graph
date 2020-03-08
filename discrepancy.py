@@ -7,7 +7,7 @@ df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
 
 if __name__ == '__main__':
     fig, ax = pyplot.subplots(constrained_layout=True)
-    ax.set_title('Binding energy discrepancy $E_{exp} - E_{pred}$')
+    ax.set_title('Binding energy discrepancy $E_{N,Z} - SEMF(N,Z)$')
     minZN, maxZ, maxN = 10, 90, 140
 
     ax.set_ylabel('Number of protons $Z$')
