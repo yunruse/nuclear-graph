@@ -88,5 +88,5 @@ for l, xy in (
 ):
     ax.annotate(l, xy)
 
-fig.set_size_inches(8.2, 4)
+fig.set_size_inches(9, 4)
 pyplot.savefig('shell_gap.png', transparency=True)
