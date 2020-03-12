@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot, colors
 
-from data import df, gathers, binding_per_nucleon
+from drop_data import df, gathers, binding_per_nucleon
 
 df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
 
@@ -46,4 +46,4 @@ if __name__ == '__main__':
     cbar.add_lines(contour)
 
     fig.set_size_inches(7.1, 4)
-    pyplot.savefig('discrepancy.png', transparency=True)
+    pyplot.savefig('drop_discrepancy.png', transparency=True)

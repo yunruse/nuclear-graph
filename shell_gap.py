@@ -3,7 +3,7 @@ from itertools import product
 import numpy as np
 from matplotlib import pyplot, colors, lines
 
-from data_shell_gap import *
+from shell_gap_data import *
  
 fig = pyplot.figure(constrained_layout=True)
 ax = fig.add_subplot()
@@ -54,4 +54,4 @@ ax.add_line(lines.Line2D([    0,       NZ], [0, NZ], **LINE))
 ax.add_line(lines.Line2D([N_REL, N_REL+NZ], [0, NZ], **LINE))
 
 fig.set_size_inches(8.2, 4)
-pyplot.savefig('shell_gap_mod.png', transparency=True)
+pyplot.savefig('shell_gap.png', transparency=True)

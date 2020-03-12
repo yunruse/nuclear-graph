@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot
 
-from data import gathers, binding_per_nucleon
+from drop_data import gathers, binding_per_nucleon
 
 def prediction(do_ticks, show_title, do_contours, do_stable):
     fig, ax = pyplot.subplots(constrained_layout=True)
@@ -49,7 +49,7 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
     
 
     fig.set_size_inches(7.1, 4)
-    pyplot.savefig('prediction.png', transparent=True)
+    pyplot.savefig('drop_prediction.png', transparent=True)
 
 if __name__ == '__main__':
     prediction(do_ticks=False, show_title=True, do_contours=True, do_stable=False)
