@@ -1,4 +1,4 @@
-# Semi-empirical mass formula for binding energy and its discrepancies
+# Exploring current nuclear models
 
 Graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for binding energy, as configured with least-squares fit<sup>1</sup>, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
 
