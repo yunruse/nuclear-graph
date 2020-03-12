@@ -9,14 +9,12 @@ df = pd.read_fwf(
     header=39, index_col=False
 )
 
+df_dict = lambda tag: {(d.N, d.Z): d[tag] for i, d in df.iterrows()}
+
 # drop predicted values and convert to MeV
 df['E_exp'] = pd.to_numeric(df.E, errors='coerce')
 df['E_known'] = 1 - pd.isnull(df.E_exp)
 df['E'] = pd.to_numeric(df.E.str.replace('#',''))
-
-def gathers(name, orelse):
-    data = {(data.N, data.Z): data[name] for i, data in df.iterrows()}
-    return np.vectorize(lambda n, z: data.get((n,z), orelse))
 
 aV, aS, aC, aA, delta0 = 15750, 17800, 711, 23700, 11180  # keV
 

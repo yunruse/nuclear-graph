@@ -1,7 +1,8 @@
 import numpy as np
-from matplotlib import pyplot, colors
+from matplotlib import pyplot, colors, lines
 
-from drop_data import df, gathers, binding_per_nucleon
+from helpers import magic_lines, grid_data
+from drop_data import df, df_dict, binding_per_nucleon
 
 df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
 
@@ -26,11 +27,12 @@ if __name__ == '__main__':
 
     energy = 'Binding energy per nucleon (keV)'
     N, Z = np.meshgrid(n, z)
-    E = gathers('difference', float('nan'))(N, Z)
+    data = df_dict('difference')
+    E = grid_data(data, N, Z)
     E[N < minZN] = E[Z < minZN] = 0
     
     minE, maxE = -50, 150
-    E[E > 152] = float('nan')  # Include doubly-magic (50, 50)
+    E[E > 152] = float('nan')
     contours = np.linspace(minE, maxE, (maxE-minE)//25+1)
     contour = ax.contour(
         E, contours, colors=('black', 'white'),

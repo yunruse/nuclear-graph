@@ -1,7 +1,8 @@
 import numpy as np
 from matplotlib import pyplot
 
-from drop_data import gathers, binding_per_nucleon
+from helpers import grid_data
+from drop_data import df_dict, binding_per_nucleon
 
 def prediction(do_ticks, show_title, do_contours, do_stable):
     fig, ax = pyplot.subplots(constrained_layout=True)
@@ -29,7 +30,6 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
         ax.set_title('Semi-empirical mass formula $SEMF(N, Z)$')
 
     if do_contours:
-
         cbar = fig.colorbar(image)
         cbar.ax.set_ylabel('Binding energy per nucleon (MeV)')
 
@@ -43,10 +43,9 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
         cbar.add_lines(contour_lines)
 
     if do_stable:
-        E_known = gathers('E_known', 0)(N, Z)
+        E_known = grid_data(df_dict('E_known'), N, Z, orelse=0)
         experimental_contour = ax.contour(E_known, (0,), cmap='gray',
             linestyles=('dashed', ), linewidths=(0.5, ))
-    
 
     fig.set_size_inches(7.1, 4)
     pyplot.savefig('drop_prediction.png', transparent=True)
