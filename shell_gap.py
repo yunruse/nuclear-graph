@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot, colors, lines
 
-from helpers import grid_data, magic_lines
+from helpers import grid, grid_data, magic_lines, LINE, LABEL, GRAPH, CONTOUR
 
 N_REL = 60  # separation between n and p shell gaps as displayed
 
@@ -44,34 +44,15 @@ for n, z in product(range(max_n+1), range(max_z+1)):
     if (n+2, z  ) in s2n:
         shell_n[n, z] = shell_comb[n+N_REL, z] = s2n[n,z] - s2n[n+2,z  ]
 
-z = np.arange(0, max_z+1)
-n = np.arange(0, max_n+1 + N_REL)
-N, Z = np.meshgrid(n, z)
-
-MAGIC = magic_lines(s2p, s2n)
-
 ## FIGURE
- 
-fig = pyplot.figure(constrained_layout=True)
-ax = fig.add_subplot()
-ax.set_title('Proton and neutron empirical shell gaps')
-ax.set_ylabel('Number of protons $Z$')
-ax.set_ylim(0, max_z-4)
 
-N_TICKS = 1 + (max_n + N_REL) // 10
-ax.set_xticks(range(0, 10*N_TICKS, 10), minor=True)
-ax.set_xticks(range(0, 10*N_TICKS, 20))
-
-Z_TICKS = 1 + (max_z) // 10
-ax.set_yticks(range(0, 10*Z_TICKS, 10), minor=True)
-ax.set_yticks(range(0, 10*Z_TICKS, 20))
-
+fig, ax, (N, Z) = grid(max_n-4+N_REL, max_z-4, minor=10, major=20)
+ax.set_title('Empirical shell gaps for binding energy $E$')
 ax.set_xlabel('Number of neutrons $N$ ($N+{}$ for neutron shell gaps)'.format(N_REL))
-ax.set_xlim(0, max_n-4 + N_REL)
 
 E = grid_data(shell_comb, N, Z)
-img = ax.imshow(
-    E, norm=colors.SymLogNorm(5), cmap='viridis', zorder=3)
+contour = ax.contour(E, (0, 1), **CONTOUR)
+img = ax.imshow(E, norm=colors.SymLogNorm(5), **GRAPH)
 
 # tick marks are nonlinear
 SHELL_TICKS = (-1, 0, 1, 2, 3, 4, 5, 10, 20)
@@ -81,25 +62,31 @@ SHELL_TICKMARKS[-1] += ' MeV'
 cbar = fig.colorbar(img, ticks=SHELL_TICKS)
 cbar.ax.set_yticklabels(SHELL_TICKMARKS)
 cbar.ax.set_ylabel('Empirical shell gap')
+cbar.add_lines(contour)
 
 # MAGIC NUMBERS
-LINE = dict(axes=ax, zorder=1, c='black', lw=0.4)
-LABEL = dict(xycoords='data', color='gray', size=6)
+LINE['axes'] = ax
 
-for i, line in MAGIC.items():
-    if i < 100:
-        line['n'][1] += N_REL
-        ax.add_line(lines.Line2D(line['n'], [i, i], **LINE))
-        x = sum(line['n'])*0.5
+for i, ((n0, n1), (z0, z1)) in magic_lines(s2p, -5, s2n, +5):
+    if n0:
+        n1 += N_REL
+        ax.add_line(lines.Line2D((n0, n1), (i, i), **LINE))
+        x = (n0+n1)/2
         ax.annotate("$Z={}$".format(i), (x*0.95 + 5, i+0.5), **LABEL)
     
     for n in 0, N_REL:
-        ax.add_line(lines.Line2D([i+n, i+n], line['z'], **LINE))
-    ax.annotate("$N={}$".format(i), (i+N_REL+0.5, line['z'][0]), **LABEL)
+        ax.add_line(lines.Line2D((i+n, i+n), (z0, z1), **LINE))
+    ax.annotate("$N={}$".format(i), (i+N_REL+0.5, z0), **LABEL)
 
 NZ = NZ_LINE_STOPPER = 56
 ax.add_line(lines.Line2D([    0,       NZ], [0, NZ], **LINE))
 ax.add_line(lines.Line2D([N_REL, N_REL+NZ], [0, NZ], **LINE))
+
+for l, xy in (
+    ('Proton shell gap \n$Δ_{2p}(N,Z)=E_{N,Z+2}+E_{N,Z-2}-2E_{N,Z}$', (20, 90)),
+    ('Neutron shell gap\n$Δ_{2n}(N,Z)=E_{N+2,Z}+E_{N-2,Z}-2E_{N,Z}$', (130, 20))
+):
+    ax.annotate(l, xy)
 
 fig.set_size_inches(8.2, 4)
 pyplot.savefig('shell_gap.png', transparency=True)
