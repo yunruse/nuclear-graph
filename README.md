@@ -6,21 +6,21 @@ These graphs are used in some undergraduate papers; I have uncluded them in rele
 
 I'm currently managing these graphs, so please send a pull request to maintain consistency with the Wikipedia versions.
 
-## Prediction
+## Liquid drop model
 <a href="https://commons.wikimedia.org/wiki/File:Semi-empirical_mass_formula.png">
-  <img src="prediction.png"/>
+  <img src="drop_prediction.png"/>
 </a>
 
 The mean binding energy of the semi-empirical mass formula. Observe that below 8 MeV nuclei rapidly become unstable outside the region of nuclei that have been discovered (as indicated by a dashed line). Contours double in energy difference as moving away from the maximum predicted binding energy. 
 
-## Discrepancy
+## Liquid drop model discrepancies
 <a href="https://commons.wikimedia.org/wiki/File:Semi-empirical_mass_formula_discrepancy.png">
-  <img src="discrepancy.png"/>
+  <img src="drop_discrepancy.png"/>
 </a>
 
 The discrepancy between experimentally-obtained binding energies and those predicted by the SEMF. Energy colours are trimmed to the range *-50 < E < 150* for contrast.
 
-## Shell gap
+## Nuclear shell gaps
 
 <a href="https://commons.wikimedia.org/wiki/File:Empirical_Shell_Gap.png">
   <img src="shell_gap.png"/>
@@ -29,22 +29,20 @@ The discrepancy between experimentally-obtained binding energies and those predi
 The empirical shell gaps, the second difference over nuclide number. The difference over two particles is taken to avoid the noise from the spin coupling effect. Note the contour "snap" in the discrepancy is far more visible here.
 
 The intermediate two-particle separation energy is used:
-
-*S2p(N,Z) = E(N,Z-2) - E(N,Z) + 2m_p*
-
-*S2p(N,Z) = E(N-2,Z) - E(N,Z) + 2m_p*
-
+```
+S2p(N,Z) = E(N,Z-2) - E(N,Z) + 2m_p
+S2p(N,Z) = E(N-2,Z) - E(N,Z) + 2m_p
+```
 This produces the empirical shell gaps:
-
-*Δ2p(N, Z) = S2p(N,Z) - S2p(N,Z+2)*
-
-*Δ2p(N, Z) = S2p(N,Z) - S2p(N+2,Z)*
-
+```
+Δ2p(N, Z) = S2p(N,Z) - S2p(N,Z+2)
+Δ2p(N, Z) = S2p(N,Z) - S2p(N+2,Z)
+```
 In other words, the empirical shell gap is expressed entirely using the binding energies *E*:
-
-*Δ2p(N,Z) = E(N,Z-2) + E(N,Z+2) - 2 E(N,Z)*
-
-*Δ2n(N,Z) = E(N-2,Z) + E(N+2,Z) - 2 E(N,Z)*
+```
+Δ2p(N,Z) = E(N,Z-2) + E(N,Z+2) - 2 E(N,Z)
+Δ2n(N,Z) = E(N-2,Z) + E(N+2,Z) - 2 E(N,Z)
+```
 
 ## References
 
