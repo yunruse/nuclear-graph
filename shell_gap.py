@@ -61,7 +61,6 @@ SHELL_TICKMARKS[-1] += ' MeV'
 
 cbar = fig.colorbar(img, ticks=SHELL_TICKS)
 cbar.ax.set_yticklabels(SHELL_TICKMARKS)
-cbar.ax.set_ylabel('Empirical shell gap')
 cbar.add_lines(contour)
 
 # MAGIC NUMBERS
@@ -88,5 +87,5 @@ for l, xy in (
 ):
     ax.annotate(l, xy)
 
-fig.set_size_inches(9, 4)
+fig.set_size_inches(8.9, 4)
 pyplot.savefig('shell_gap.png', transparency=True)
