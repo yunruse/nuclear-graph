@@ -14,11 +14,10 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
         ax.set_xticks([]); ax.set_yticks([])
 
     if show_title:
-        ax.set_title('Semi-empirical mass formula $SEMF(N, Z)$')
+        ax.set_title('Binding energy per nucleon $SEMF(N, Z)/A$')
 
     if do_contours:
         cbar = fig.colorbar(image)
-        cbar.ax.set_ylabel('Binding energy per nucleon')
 
         M = E.max()
         contours = (0, M-8, M-4, M-2, M-1, M-1/2, M-1/4, M-1/8)
@@ -41,7 +40,7 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
             E_known, (-10, 0), zorder=5,
             cmap='gray', linestyles=('dashed', ), linewidths=(0.5, ))
 
-    fig.set_size_inches(7.1, 4)
+    fig.set_size_inches(7, 4)
     pyplot.savefig('drop_prediction.png', transparent=True)
 
 if __name__ == '__main__':
