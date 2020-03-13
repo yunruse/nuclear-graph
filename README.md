@@ -1,8 +1,10 @@
 # Exploring current nuclear models
 
-Graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for binding energy, as configured with least-squares fit<sup>1</sup>, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
+Graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for binding energy, as configured with least-squares fit, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
 
 These graphs are used in some undergraduate papers; I have uncluded them in relevant Wikipedia articles (click the images for their Wikimedia Commons pages). As such, they are in the public domain under the Creative Commons CC0 license.
+
+While the original *a* coefficients were obtained via a textbook<sup>1</sup>, they are from 1994; therefore, this is used as the starting vector for a round of `scipy.optimize.least_squares`. Notably, the optimisation algorithm used takes a little less weight for nuclides of *A<5*, producing a more accurate curve. This new curve, which factors in data from AME2016, grazes the zero-discrepancy line a lot more often, but more importantly displays the (20, 20) doubly-magic nuclide with a lot more clarity.
 
 I'm currently managing these graphs, so please send a pull request to maintain consistency with the Wikipedia versions.
 

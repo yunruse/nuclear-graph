@@ -14,7 +14,7 @@ if __name__ == '__main__':
     data = df_dict('difference')
     E = grid_data(data, N, Z)
     
-    minE, maxE = -50, 150
+    minE, maxE = -200, 150
     E[E > 152] = float('nan')
     contours = np.linspace(minE, maxE, (maxE-minE)//25+1)
     contour = ax.contour(E, contours, **CONTOUR)
@@ -24,8 +24,11 @@ if __name__ == '__main__':
 
     image = ax.imshow(E, **GRAPH)
     cbar = fig.colorbar(image)
-    cbar.ax.set_ylabel('Binding energy per nucleon (keV)')
+    cbar.ax.set_ylabel('Binding energy per nucleon')
     cbar.set_ticks(contours)
+    labels = [str(int(x)) for x in contours]
+    labels[-2] += ' keV'
+    cbar.set_ticklabels(labels)
     cbar.add_lines(contour)
 
     # MAGIC NUMBERS
@@ -40,5 +43,5 @@ if __name__ == '__main__':
             ax.add_line(lines.Line2D((i, i), (z0, z1), **LINE))
             ax.annotate("$N={}$".format(i), (i+0.5, max(z0, 10)), **LABEL)
 
-    fig.set_size_inches(7.1, 4)
+    fig.set_size_inches(7.4, 4)
     pyplot.savefig('drop_discrepancy.png', transparency=True)

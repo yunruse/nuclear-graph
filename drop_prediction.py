@@ -18,16 +18,22 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
 
     if do_contours:
         cbar = fig.colorbar(image)
-        cbar.ax.set_ylabel('Binding energy per nucleon (MeV)')
+        cbar.ax.set_ylabel('Binding energy per nucleon')
 
         M = E.max()
         contours = (0, M-8, M-4, M-2, M-1, M-1/2, M-1/4, M-1/8)
     else:
         contours = (0, )
+
+    ticks = np.arange(0, 9, 1)
+    labels = [str(int(x)) for x in ticks]
+    labels[-1] += ' MeV'
         
     contour_lines = ax.contour(E, contours, cmap='magma', zorder=5)
     if do_contours:
         cbar.add_lines(contour_lines)
+    cbar.set_ticks(ticks)
+    cbar.set_ticklabels(labels)
 
     if do_stable:
         E_known = grid_data(df_dict('E_known'), N, Z, orelse=0)
