@@ -1,24 +1,24 @@
 # nuclear-graphs
 
-Graphs of the Atomic Mass Evaluation and Nubase Evaluation, found at the [AMDC](https://www-nds.iaea.org/amdc/).
+Graphs of the Atomic Mass Evaluation and Nubase Evaluation, found at the [AMDC](https://www-nds.iaea.org/amdc/). Currently only the 2016 dataset is in use.
 
-Currently only the 2016 version is in use.
+Currently limited to graphs of the liquid drop model (Semi-Empirical Mass Formula), an approximation for binding energy, as configured with least-squares fit, and as contrasted to experimentally-obtained mass discrepancies.
 
-Currently limited to that of the liquid drop model (Semi-Empirical Mass Formula), an approximation for binding energy, as configured with least-squares fit, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
-
-To get the graphs, simply:
+To get the graphs, simply run:
 
 ```sh
 pip install pandas matplotlib numpy
-python -m nuclear-graph
+python -m nuclear-graph --help
 ```
 
+You can run without arguments, but the graphs are configurable.
+
 > [!NOTE]
-> These graphs are used on Wikipedia:
+> These graphs are used on Wikipedia with the code:
 > ```sh
-> python -m nuclear-graph -t
+> python -m nuclear-graph --transparent
 > ```
-> Click a graph to see the relevant Wikimedia Commons article, including articles they are used on.
+> Click a graph to see the relevant Wikimedia Commons article, including Wikipedia articles they are used on.
 > They, and the source code, are in the public domain under the Creative Commons CC0 license.
 
 ## `drop`: Liquid drop model
@@ -48,8 +48,3 @@ The empirical shell gaps are the kernel [1, 0, -2, 0, 1] applied to extract loca
 ```
 
 This uses a distance of two nuclides to avoid spin effects.
-
-## References
-
-1. Rohlf, J.W. Modern Physics from &alpha; to Z<sup>0</sup>. Wiley (1994).
-2. Wang, M., et al. The AME2016 mass evaluation.
