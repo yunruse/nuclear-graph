@@ -35,7 +35,7 @@ The mean binding energy of the semi-empirical mass formula. Observe that below 8
 
 The discrepancy between experimentally-obtained binding energies and those predicted by the SEMF. Energy colours are trimmed to the range *-50 < E < 150* for contrast.
 
-## `shell` Nuclear shell gaps
+## `shell`: Nuclear shell gaps
 
 <a href="https://commons.wikimedia.org/wiki/File:Empirical_Shell_Gap.png">
   <img src="img/2016/shell.png"/>
