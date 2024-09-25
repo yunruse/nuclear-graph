@@ -1,6 +1,10 @@
 # nuclear-graphs
 
-Graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for binding energy, as configured with least-squares fit, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
+Graphs of the Atomic Mass Evaluation and Nubase Evaluation, found at the [AMDC](https://www-nds.iaea.org/amdc/).
+
+Currently only the 2016 version is in use.
+
+Currently limited to that of the liquid drop model (Semi-Empirical Mass Formula), an approximation for binding energy, as configured with least-squares fit, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
 
 To get the graphs, simply:
 
@@ -16,14 +20,14 @@ python -m nuclear-graph
 
 ## `drop`: Liquid drop model
 <a href="https://commons.wikimedia.org/wiki/File:Semi-empirical_mass_formula.png">
-  <img src="img/drop.png"/>
+  <img src="img/2016/drop.png"/>
 </a>
 
 The mean binding energy of the semi-empirical mass formula. Observe that below 8 MeV nuclei rapidly become unstable outside the region of nuclei that have been discovered (as indicated by a dashed line). Contours double in energy difference as moving away from the maximum predicted binding energy. 
 
 ## `discrep`: Liquid drop model discrepancies
 <a href="https://commons.wikimedia.org/wiki/File:Semi-empirical_mass_formula_discrepancy.png">
-  <img src="img/discrep.png"/>
+  <img src="img/2016/discrep.png"/>
 </a>
 
 The discrepancy between experimentally-obtained binding energies and those predicted by the SEMF. Energy colours are trimmed to the range *-50 < E < 150* for contrast.
@@ -31,7 +35,7 @@ The discrepancy between experimentally-obtained binding energies and those predi
 ## `shell` Nuclear shell gaps
 
 <a href="https://commons.wikimedia.org/wiki/File:Empirical_Shell_Gap.png">
-  <img src="img/shell.png"/>
+  <img src="img/2016/shell.png"/>
 </a>
 
 The empirical shell gaps are the kernel [1, 0, -2, 0, 1] applied to extract local features:
