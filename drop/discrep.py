@@ -1,12 +1,13 @@
+#! /usr/bin/env python3
 import numpy as np
-from matplotlib import pyplot, colors, lines
+from matplotlib import pyplot, lines
 
-from drop_data import df, df_dict, binding_per_nucleon
-from helpers import grid, grid_data, magic_lines, LINE, LABEL, GRAPH, CONTOUR
+from ._data import df, df_dict, binding_per_nucleon
+from ._helpers import grid, grid_data, magic_lines, LINE, LABEL, GRAPH, CONTOUR
 
-df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
+def discrep():
+    df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
 
-if __name__ == '__main__':
     max_n, max_z = 140, 90
     fig, ax, (N, Z) = grid(max_n, max_z, minor=10, major=20, min_nz=10)
     ax.set_title('Binding energy discrepancy $E_{N,Z} - SEMF(N,Z)$')
@@ -44,4 +45,7 @@ if __name__ == '__main__':
             ax.annotate("$N={}$".format(i), (i+0.5, max(z0, 10)), **LABEL)
 
     fig.set_size_inches(7.4, 4)
-    pyplot.savefig('drop_discrepancy.png', transparency=True)
+    pyplot.savefig('img/discrep.png', transparent=True)
+
+if __name__ == '__main__':
+    discrep()

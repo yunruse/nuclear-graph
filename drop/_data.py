@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_fwf(
-    'mass16.txt',
+    'data/mass16.txt',
     usecols=(2, 3, 11),
     names=tuple('NZE'),
     widths=(1,3,5,5,5,1,3,4,1,13,11,11,9,1,2,11,9,1,3,1,12,11,1),
