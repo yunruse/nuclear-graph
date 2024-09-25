@@ -4,7 +4,7 @@ from typing import TypedDict
 parser = ArgumentParser()
 parser.add_argument(
     '--transparent', '-t', action='store_true',
-    help="Use a transparent backing to the graph."
+    help="Use transparent backing"
 )
 
 class Args:

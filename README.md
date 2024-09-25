@@ -13,9 +13,12 @@ pip install pandas matplotlib numpy
 python -m nuclear-graph
 ```
 
-> [!INFO]
->
-> These graphs are used on Wikipedia. Click a graph to see the relevant Wikimedia Commons article, including articles they are used on.
+> [!NOTE]
+> These graphs are used on Wikipedia:
+> ```sh
+> python -m nuclear-graph -t
+> ```
+> Click a graph to see the relevant Wikimedia Commons article, including articles they are used on.
 > They, and the source code, are in the public domain under the Creative Commons CC0 license.
 
 ## `drop`: Liquid drop model
