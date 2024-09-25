@@ -2,20 +2,20 @@
 import numpy as np
 from matplotlib import pyplot, lines
 
-from ._data import AMEDataset, df, df_dict, binding_per_nucleon
+from ._data import AMEDataset, dataframe_dict
 from ._helpers import grid, grid_data, magic_lines, LINE, LABEL, GRAPH, CONTOUR
 from ._parser import Args
 
 ame = AMEDataset(2016)
 
 def discrep(args: Args):
-    df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
+    args.ame.df['difference'] = args.ame.df.E - args.ame.semf(args.ame.df.N, args.ame.df.Z)
 
     max_n, max_z = 140, 90
     fig, ax, (N, Z) = grid(max_n, max_z, minor=10, major=20, min_nz=10)
     ax.set_title('Binding energy discrepancy $E_{N,Z} - SEMF(N,Z)$')
     
-    data = df_dict('difference')
+    data = dataframe_dict(args.ame.df, 'difference')
     E = grid_data(data, N, Z)
     
     minE, maxE = -200, 150
@@ -48,7 +48,7 @@ def discrep(args: Args):
             ax.annotate("$N={}$".format(i), (i+0.5, max(z0, 10)), **LABEL)
 
     fig.set_size_inches(7.4, 4)
-    pyplot.savefig(ame.imgdir / 'discrep.png', transparent=args.transparent)
+    pyplot.savefig(args.ame.imgdir / 'discrep.png', transparent=args.transparent)
 
 if __name__ == '__main__':
     discrep(Args.get())

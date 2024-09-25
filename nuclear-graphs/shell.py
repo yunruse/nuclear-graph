@@ -10,11 +10,9 @@ from ._parser import Args
 
 N_REL = 60  # separation between n and p shell gaps as displayed
 
-ame = AMEDataset(2016)
-
 def shell(args: Args):
     df2 = pd.read_fwf(
-        ame.dir / 'react1.txt',
+        args.ame.dir / 'react1.txt',
         usecols=(1, 3, 4, 6),
         names='A Z s2n s2p'.split(),
         widths=(1,3,4,4,11,8,10,8),
@@ -93,7 +91,7 @@ def shell(args: Args):
         ax.annotate(l, xy)
 
     fig.set_size_inches(8.9, 4)
-    pyplot.savefig(ame.imgdir / 'shell.png', transparent=args.transparent)
+    pyplot.savefig(args.ame.imgdir / 'shell.png', transparent=args.transparent)
 
 if __name__ == '__main__':
     shell(Args.get())
