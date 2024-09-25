@@ -4,10 +4,11 @@ from matplotlib import pyplot
 
 from ._helpers import grid_data, grid, GRAPH
 from ._data import df_dict, binding_per_nucleon, AMEDataset
+from ._parser import Args
 
 ame = AMEDataset(2016)
 
-def prediction(do_ticks, show_title, do_contours, do_stable):
+def prediction(args: Args, do_ticks, show_title, do_contours, do_stable):
     fig, ax, (N, Z) = grid(140, 90, major=10, minor=20, min_nz=0, data_min=1)
     E = binding_per_nucleon(N, Z) / 1000
     E[E<0] = 0
@@ -44,7 +45,7 @@ def prediction(do_ticks, show_title, do_contours, do_stable):
             cmap='gray', linestyles=('dashed', ), linewidths=(0.5, ))
 
     fig.set_size_inches(7, 4)
-    pyplot.savefig(ame.imgdir / 'drop.png', transparent=True)
+    pyplot.savefig(ame.imgdir / 'drop.png', transparent=args.transparent)
 
 if __name__ == '__main__':
-    prediction(do_ticks=True, show_title=True, do_contours=True, do_stable=True)
+    prediction(Args.get(), do_ticks=True, show_title=True, do_contours=True, do_stable=True)

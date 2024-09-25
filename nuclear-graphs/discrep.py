@@ -4,10 +4,11 @@ from matplotlib import pyplot, lines
 
 from ._data import AMEDataset, df, df_dict, binding_per_nucleon
 from ._helpers import grid, grid_data, magic_lines, LINE, LABEL, GRAPH, CONTOUR
+from ._parser import Args
 
 ame = AMEDataset(2016)
 
-def discrep():
+def discrep(args: Args):
     df['difference'] = df.E - binding_per_nucleon(df.N, df.Z)
 
     max_n, max_z = 140, 90
@@ -47,7 +48,7 @@ def discrep():
             ax.annotate("$N={}$".format(i), (i+0.5, max(z0, 10)), **LABEL)
 
     fig.set_size_inches(7.4, 4)
-    pyplot.savefig(ame.imgdir / 'discrep.png', transparent=True)
+    pyplot.savefig(ame.imgdir / 'discrep.png', transparent=args.transparent)
 
 if __name__ == '__main__':
-    discrep()
+    discrep(Args.get())
