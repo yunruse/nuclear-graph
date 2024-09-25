@@ -1,6 +1,13 @@
-# Exploring current nuclear models
+# nuclear-graphs
 
 Graphs on the Semi-Empirical Mass Formula (SEMF), an approximation for binding energy, as configured with least-squares fit, and as contrasted to experimentally-obtained mass discrepancies<sup>2</sup>.
+
+To get the graphs, simply:
+
+```sh
+pip install pandas matplotlib numpy
+python -m nuclear-graph
+```
 
 > [!INFO]
 >
