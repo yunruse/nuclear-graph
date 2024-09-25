@@ -5,12 +5,15 @@ import pandas as pd
 from matplotlib import pyplot, colors, lines
 
 from ._helpers import grid, grid_data, magic_lines, LINE, LABEL, GRAPH, CONTOUR
+from ._data import AMEDataset
 
 N_REL = 60  # separation between n and p shell gaps as displayed
 
+ame = AMEDataset(2016)
+
 def shell():
     df2 = pd.read_fwf(
-        'data/rct1-16.txt',
+        ame.dir / 'react1.txt',
         usecols=(1, 3, 4, 6),
         names='A Z s2n s2p'.split(),
         widths=(1,3,4,4,11,8,10,8),
@@ -89,7 +92,7 @@ def shell():
         ax.annotate(l, xy)
 
     fig.set_size_inches(8.9, 4)
-    pyplot.savefig('img/shell.png', transparent=True)
+    pyplot.savefig(ame.imgdir / 'shell.png', transparent=True)
 
 if __name__ == '__main__':
     shell()

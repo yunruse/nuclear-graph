@@ -1,8 +1,29 @@
+from dataclasses import dataclass
+from pathlib import Path
 import pandas as pd
 import numpy as np
 
+@dataclass
+class AMEDataset:
+    year: int
+
+    @property
+    def dir(self):
+        p = Path(f'data/{self.year}')
+        p.mkdir(parents=True, exist_ok=True)
+        return p
+
+    @property
+    def imgdir(self):
+        p = Path(f'img/{self.year}')
+        p.mkdir(parents=True, exist_ok=True)
+        return p
+
+    # TODO: standardise a bit
+    # and add full df table extraction
+
 df = pd.read_fwf(
-    'data/mass16.txt',
+    AMEDataset(2016).dir / 'mass.txt',
     usecols=(2, 3, 11),
     names=tuple('NZE'),
     widths=(1,3,5,5,5,1,3,4,1,13,11,11,9,1,2,11,9,1,3,1,12,11,1),
