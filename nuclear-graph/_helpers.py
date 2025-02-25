@@ -27,7 +27,11 @@ def grid(max_n, max_z, minor, major, min_nz=0, data_min=0):
 
 LINE    = dict(zorder=1, c='black', lw=0.4)
 GRAPH   = dict(zorder=3, cmap='viridis', origin='lower')
-CONTOUR = dict(zorder=5, colors=('white', 'black'), linestyles='dotted', linewidths=0.5)
+CONTOUR = dict(zorder=5,
+               colors=('black', 'white'),
+               linewidths=(0.5, 0.2, 0.2, 0.2),
+               linestyles=('solid'),
+               )
 LABEL   = dict(zorder=7, c='gray',  size=6, xycoords='data')
 
 magic_lines = lambda p_data, p_width, n_data, n_width: {
